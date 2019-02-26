@@ -15,21 +15,4 @@ allprojects {
     }
 }
 
-release {
-    tagTemplate = '$version'
-}
-
-task(startmessage) << {
-    println 'starting build'
-}
-
-task(buildSubprojects) << {
-    println project.version
-
-    project.tasks.build
-}
-
-beforeReleaseBuild.dependsOn startmessage
-afterReleaseBuild.dependsOn buildSubprojects
-
 wrapper.gradleVersion = '2.10'
