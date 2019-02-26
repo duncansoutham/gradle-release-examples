@@ -23,11 +23,13 @@ task(startmessage) << {
     println 'starting build'
 }
 
-task(printversion) << {
+task(buildSubprojects) << {
     println project.version
+
+    project.tasks.publish
 }
 
 beforeReleaseBuild.dependsOn startmessage
-afterReleaseBuild.dependsOn printversion
+afterReleaseBuild.dependsOn buildSubprojects
 
 wrapper.gradleVersion = '2.10'
